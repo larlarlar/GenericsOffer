@@ -9,7 +9,7 @@ import ru.netology.repository.OfferRepository;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OfferManagerTest {
-    int nonexistentID = 6;
+    int nonexistentID = 7;
     OfferRepository repository = new OfferRepository();
     OfferManager manager = new OfferManager(repository);
 
@@ -18,6 +18,7 @@ public class OfferManagerTest {
     Offer thrdOffer = new Offer(3, 3333, 33, "MOW", "LED");
     Offer frthOffer = new Offer(4, 4444, 44, "MOW", "LED");
     Offer fthOffer = new Offer(5, 5555, 55, "LED", "AMS");
+    Offer sxthOffer = new Offer(6, 6666, 66, "LED", "MOW");
 
     @BeforeEach
     void setup() {
@@ -26,6 +27,7 @@ public class OfferManagerTest {
         manager.add(thrdOffer);
         manager.add(frthOffer);
         manager.add(fthOffer);
+        manager.add(sxthOffer);
     }
 
     @Test
@@ -52,4 +54,12 @@ public class OfferManagerTest {
     public void shouldNotFindByID() {
         assertNull(manager.findWithID(nonexistentID));
     }
-}
+
+    @Test
+    public void shouldNotFindByAirport() {
+            Offer[] expected = new Offer[]{};
+            Offer[] actual = manager.searchByAirports("HEL", "AMS");
+            assertArrayEquals(expected, actual);
+    }
+    }
+

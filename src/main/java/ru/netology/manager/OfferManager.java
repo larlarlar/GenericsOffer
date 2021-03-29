@@ -26,8 +26,8 @@ public class OfferManager {
                 tmp[tmp.length - 1] = item;
                 result = tmp;
             }
-            Arrays.sort(result);
         }
+        Arrays.sort(result);
         return result;
     }
 
